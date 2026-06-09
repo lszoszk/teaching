@@ -3,7 +3,7 @@
 Interaktywne ćwiczenie do zajęć *Prawo a algorytmy w wymiarze sprawiedliwości* (WPiA UAM),
 oparte na sprawie **State v. Loomis** (2016) i systemie oceny ryzyka **COMPAS**.
 
-**▶ Otwórz:** https://lszoszk.github.io/teaching/Loomis%20v%20Wisconsin/
+**▶ Otwórz:** https://lszoszk.github.io/teaching/loomis-v-wisconsin/
 
 ## Co zawiera (`index.html`)
 1. **Eksplorator COMPAS** — przesuwasz próg „high-risk" i widzisz dwa konkurujące pytania o sprawiedliwość.
