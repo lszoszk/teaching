@@ -174,18 +174,10 @@
 
 <!-- PANEL 1 -->
 <h2><span class="num">1.</span>Eksplorator COMPAS</h2>
-<p class="desc">COMPAS daje każdemu ocenę ryzyka w skali 1–10 (decyl). Sąd traktuje wysoki decyl jako „wysokie ryzyko”.
-Ty decydujesz, gdzie postawić próg uznania za „wysokiego ryzyka”, i patrzysz, co dzieje się z dwoma pytaniami dotyczącymi sprawiedliwości (ang. <i>fairness</i>).</p>
+<p class="desc">COMPAS wystawia każdemu ocenę ryzyka, a sąd traktuje wysoką ocenę jako „wysokie ryzyko”.
+Ty decydujesz, <b>jak szeroko zarzucić tę siatkę</b> — od jak surowego progu uznajemy kogoś za „wysokie ryzyko” —
+i patrzysz, co dzieje się z dwoma pytaniami dotyczącymi sprawiedliwości (ang. <i>fairness</i>).</p>
 <div class="card" id="p1"></div>
-<details class="dropnote">
-  <summary>Jak czytać decyl?</summary>
-  <div class="dropbody">
-    Suwak ustawia, <b>od którego decyla</b> traktujemy kogoś jako „wysokie ryzyko”. Decyl (skala 1–10) to nie
-    procent ani prawdopodobieństwo, lecz <b>pozycja w rankingu</b>: „decyl 8” znaczy „wyżej niż większość” osób
-    z populacji odniesienia, a <b>nie</b> „80% szans na powrót”. Sama liczba wygląda twardo, ale jej znaczenie
-    zależy od tego, <i>z kim</i> porównano oskarżonego — często z próbą krajową, niezwalidowaną lokalnie.
-  </div>
-</details>
 
 <h2><span class="num">2.</span>Dlaczego obie strony mają rację — i dlaczego to wybór, nie technika</h2>
 <div class="note">
@@ -232,6 +224,16 @@ sprawdzić model na nowych danych, nie tylko na tych, na których został zbudow
 <p class="desc">Z odpowiedzi powstaje raport (Pre-Sentence Investigation). Sąd widzi <b>trzy skale ryzyka</b> jako decyle 1–10
 — bez wzorów, bez wag, bez kodu. Poniżej format raportu (układ rzeczywisty, wartości przykładowe).</p>
 <div class="card report" id="report"></div>
+<details class="dropnote">
+  <summary>Jak czytać te oceny (decyle)?</summary>
+  <div class="dropbody">
+    To, co widzi sąd, to <b>decyle 1–10</b> — nie procent ani prawdopodobieństwo, lecz <b>pozycja w rankingu</b>.
+    „8/10” znaczy „wyżej niż większość osób z populacji odniesienia”, a <b>nie</b> „80% szans na powrót”. Trzy
+    skale (recydywa, przemoc, faza przedprocesowa) to <b>trzy osobne rankingi</b> tej samej osoby — dlatego
+    <b>nie sumują się</b> do 100%. Znaczenie liczby zależy od tego, <i>z kim</i> porównano oskarżonego — często
+    z próbą krajową, niezwalidowaną lokalnie (stąd ostrzeżenie poniżej).
+  </div>
+</details>
 <div class="quote">
   „You're identified, through the COMPAS assessment, as an individual who is at high risk to the community. (…)
   the risk assessment tools that have been utilized suggest that you're extremely high risk to re-offend.”
@@ -457,10 +459,10 @@ function buildExplorer(containerId, scoreIdx){
 
   function render(){
     const thr = +slider.value;
-    thrTag.textContent = 'decyl ≥ '+thr;
     const res = GROUPS.map(g=>calc(g.code, scoreIdx, thr));
     const flagAvg = res.reduce((a,r)=>a+r.flagged,0)/res.length;
-    ctxt.textContent = `Przy tym progu etykietę „wysokiego ryzyka” dostaje średnio ${(flagAvg*100).toFixed(0)}% oskarżonych.`;
+    thrTag.textContent = `~${(flagAvg*100).toFixed(0)}% oznaczonych`;
+    ctxt.textContent = `Przesuwasz próg „wysokiego ryzyka”: szersza siatka łapie więcej osób, węższa — mniej. Patrz, co dzieje się z dwoma pytaniami niżej.`;
     boxes.ppv.innerHTML = rowsHtml('ppv', res.map(r=>r.ppv));
     boxes.fpr.innerHTML = rowsHtml('fpr', res.map(r=>r.fpr));
 
