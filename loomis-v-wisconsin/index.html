@@ -321,14 +321,13 @@ Wybierz zakładkę z boku.</p>
       <p class="desc" style="margin-top:0">Oto <b>prawdziwy</b> kwestionariusz COMPAS — 137 pozycji wypełnianych
       przed wydaniem oceny. To dokładnie te „zmienne”, których listę dostał Loomis. Żadne pytanie nie dotyczy
       rasy — zwróć uwagę, czego dotyczą.</p>
-      <p class="legendf">Wyłap pytania o to, <b>kim ktoś jest / skąd pochodzi / w co wierzy</b> — np. sąsiedztwo
-      (poz. 65–70), rodzina (33–38), praca i pieniądze (80–94), postawy (127–137).</p>
-      <iframe src="https://embed.documentcloud.org/documents/2702103-Sample-Risk-Assessment-COMPAS-CORE/?embed=1"
-        title="Kwestionariusz COMPAS-CORE (ProPublica / DocumentCloud)"
-        style="width:100%; height:680px; border:1px solid var(--line); border-radius:10px;"
-        allow="fullscreen" loading="lazy"></iframe>
-      <p class="bsmall" style="margin-top:8px">Źródło: dokument upubliczniony przez ProPublica.
-      <a href="https://www.documentcloud.org/documents/2702103-Sample-Risk-Assessment-COMPAS-CORE/" target="_blank" rel="noopener">Otwórz pełny dokument&nbsp;↗</a></p>
+      <object data="kwestionariusz-compas.pdf#view=FitH" type="application/pdf"
+        style="width:100%; height:680px; border:1px solid var(--line); border-radius:10px;">
+        <p style="padding:16px;margin:0">Twoja przeglądarka nie wyświetla PDF w oknie.
+        <a href="kwestionariusz-compas.pdf" target="_blank" rel="noopener">Otwórz kwestionariusz (PDF)&nbsp;↗</a></p>
+      </object>
+      <p class="bsmall" style="margin-top:8px">Źródło: kwestionariusz COMPAS-CORE upubliczniony przez ProPublica.
+      <a href="kwestionariusz-compas.pdf" target="_blank" rel="noopener">Otwórz PDF&nbsp;↗</a></p>
       <div class="qbox" style="margin-bottom:0">
         <p>❓ <b>Do analizy:</b> podziel pytania na trzy grupy — (1) co oskarżony <b>zrobił</b>, (2) <b>kim jest /
         skąd pochodzi</b> (rodzina, sąsiedztwo, bieda), (3) <b>w co wierzy</b> (postawy). Za którą zgodziłbyś się
@@ -597,7 +596,7 @@ function updateBuilder(){
   }else if(hasRace){
     msg='Dodałeś <b>rasę</b> — zmienną <b>zakazaną</b> w wyroku. Zauważ, jak <i>niewiele</i> zmienia w trafności: model i bez niej „wie” to z innych danych. Zakazanie jednej zmiennej nie czyni systemu neutralnym.';
   }else if(hasPriors && gap>=0.12){
-    msg='<b>Stronniczość bez rasy.</b> Nie użyłeś rasy, a model i tak częściej błędnie piętnuje czarnoskórych. Część tej luki to ślad rasy w danych (np. nadmiarowy policing → więcej skazań), część — efekt wieku. Tak czy inaczej: stronniczy czyni system <i>dobór danych</i>, nie sam wzór.';hot=true;
+    msg='<b>Stronniczość bez rasy.</b> Nie użyłeś rasy, a model i tak częściej błędnie piętnuje czarnoskórych. Część tej luki to ślad rasy w danych (np. częstsze kontrole i zatrzymania → więcej skazań), część — efekt wieku. Tak czy inaczej: stronniczy czyni system <i>dobór danych</i>, nie sam wzór.';hot=true;
   }else if(a>=COMPAS_AUC){
     msg='Twój model dorównuje COMPAS (137 zmiennych) — przy zaledwie kilku zmiennych. Czarna skrzynka nie jest magiczna.';
   }else if(delta!=null && Math.abs(delta)<0.005){
